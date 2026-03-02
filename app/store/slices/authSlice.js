@@ -19,10 +19,12 @@ import {
  * @property {string|null} error
  * @property {boolean}     emailVerificationSent
  */
+const isBrowser = typeof window !== "undefined";
+
 const initialState = {
   user: null,
-  accessToken: localStorage.getItem("accessToken") || null,
-  refreshToken: localStorage.getItem("refreshToken") || null,
+  accessToken: isBrowser ? localStorage.getItem("accessToken") : null,
+  refreshToken: isBrowser ? localStorage.getItem("refreshToken") : null,
   isAuthenticated: false,
   isAdmin: false,
   loading: false,
